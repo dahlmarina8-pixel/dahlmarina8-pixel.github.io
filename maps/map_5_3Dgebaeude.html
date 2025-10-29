@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Gebäude Deutschland</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.109/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.109/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        html, body, #cesiumContainer {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+    <script>
+        // Cesium Ion Access Token (optional, falls benötigt)
+        // Cesium.Ion.defaultAccessToken = 'DEIN_TOKEN_HIER';
+
+        const viewer = new Cesium.Viewer('cesiumContainer', {
+            terrainProvider: Cesium.createWorldTerrain(),
+            baseLayerPicker: true,
+            geocoder: false,
+            homeButton: true,
+            sceneModePicker: true,
+            navigationHelpButton: false,
+            animation: false,
+            timeline: false,
+            fullscreenButton: false
+        });
+
+        // Basemap.de 3D Gebäude-Layer hinzufügen
+        const buildingTileset = viewer.scene.primitives.add(
+            new Cesium.Cesium3DTileset({
+                url: 'https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v1/bm_gebaeude/3d-tiles/tileset.json'
+            })
+        );
+
+        // Optional: Kamera auf Deutschland zentrieren
+        viewer.camera.setView({
+            destination: Cesium.Cartesian3.fromDegrees(10.4515, 51.1657, 1000000),
+            orientation: {
+                heading: Cesium.Math.toRadians(0),
+                pitch: Cesium.Math.toRadians(-45),
+                roll: 0.0
+            }
+        });
+
+        // Optional: Zu einem spezifischen Gebäude fliegen (z.B. Berlin)
+        buildingTileset.readyPromise.then(function() {
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(13.4050, 52.5200, 1000),
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-45),
+                    roll: 0.0
+                },
+                duration: 3
+            });
+        });
+    </script>
+</body>
+</html>

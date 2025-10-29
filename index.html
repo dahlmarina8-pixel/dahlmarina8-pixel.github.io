@@ -55,9 +55,8 @@ header{padding:2rem 1rem 1rem;background:var(--accent);color:#fff;position:relat
 table{width:100%;border-collapse:collapse;background:var(--card)}
 th,td{border:1px solid var(--border);padding:.5rem;text-align:left}
 th{background:var(--accent);color:#fff;font-weight:700}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
-.card{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
-.card figure{margin:0;height:140px;overflow:hidden;background:#eee}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}.card{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.card figure{margin:0;height:300px;overflow:hidden;background:#eee}
 .map-embed{border:0;width:100%;height:100%;display:block}
 .card-content{padding:1rem}
 .card-title{color:var(--accent);font-weight:700;margin-bottom:.4rem}
@@ -115,6 +114,7 @@ th{background:var(--accent);color:#fff;font-weight:700}
       <button class="tab" role="tab" id="tab-about" aria-controls="panel-about" aria-selected="true" tabindex="0">Über mich</button>
       <button class="tab" role="tab" id="tab-current" aria-controls="panel-current" aria-selected="false" tabindex="-1">Aktuelles</button>
       <button class="tab" role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="false" tabindex="-1">Projekte</button>
+      <button class="tab" role="tab" id="tab-maps" aria-controls="panel-maps" aria-selected="false" tabindex="-1">Karten</button>
     </nav>
     <!--Tab: Über mich-->
     <div class="tabpanels">
@@ -163,6 +163,57 @@ th{background:var(--accent);color:#fff;font-weight:700}
             <figure><iframe class="map-embed" title="OSM Deutschland" src="https://www.openstreetmap.org/export/embed.html?bbox=5.5%2C47.0%2C15.5%2C55.5&layer=mapnik&marker=51.1657%2C10.4515" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></figure>
             <div class="card-content"><a href="https://www.openstreetmap.org/" target="_blank" rel="noopener"><div class="card-title">OpenStreetMap</div><div>Ein tolles Projekt.</div></a></div>
           </div>
+        </div>
+      </section>
+      <!--Tab: Karten--> 
+      <section id="panel-maps" class="panel" role="tabpanel" aria-labelledby="tab-maps" hidden>
+        <h2>Karten</h2>
+        <div class="gallery">
+          <div class="card">
+            <figure>
+              <iframe class="map-embed" src="https://dahlmarina8-pixel.github.io/maps/map_1_basiskarte.html"></iframe>
+            </figure>
+            <div class="card-content">
+              <h3 class="card-title">Basiskarte</h3>
+            </div>
+          </div>
+
+          <div class="card">
+            <figure>
+              <iframe class="map-embed" src="https://dahlmarina8-pixel.github.io/maps/map_2_punkte.html"></iframe>
+            </figure>
+            <div class="card-content">
+              <h3 class="card-title">Karte mit Marker (Punkte)</h3>
+            </div>
+          </div>
+
+          <div class="card">
+            <figure>
+              <iframe class="map-embed" src="https://dahlmarina8-pixel.github.io/maps/map_3_reiseroute.html"></iframe>
+            </figure>
+            <div class="card-content">
+              <h3 class="card-title">Karte mit Polylinie</h3>
+            </div>
+          </div>
+
+          <div class="card">
+            <figure>
+              <iframe class="map-embed" src="https://dahlmarina8-pixel.github.io/maps/map_4_flaechen_online.html"></iframe>
+            </figure>
+            <div class="card-content">
+              <h3 class="card-title">Karte mit Fläche</h3>
+            </div>
+          </div>
+
+          <div class="card">
+            <figure>
+              <iframe class="map-embed" src="https://dahlmarina8-pixel.github.io/maps/map_5_3Dgebaeude.html"></iframe>
+            </figure>
+            <div class="card-content">
+              <h3 class="card-title">Karte mit 3D-Gebäuden</h3>
+            </div>
+          </div>
+
         </div>
       </section>
     </div>
